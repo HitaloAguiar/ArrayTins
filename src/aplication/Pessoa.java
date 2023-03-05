@@ -6,6 +6,13 @@ public class Pessoa {
 	private String cpf;
 	private Integer idade;
 	
+	public Pessoa(String nome, String cpf, Integer idade) {
+		
+		this.nome = nome;
+		this.cpf = cpf;
+		this.idade = idade;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -25,5 +32,9 @@ public class Pessoa {
 		this.idade = idade;
 	}
 	
-	
+	@Override
+	public String toString() {
+		
+		return "Pessoa: [ Nome: " + nome + ", CPF: " + cpf + ", idade: " + idade + " ]";
+	}
 }
