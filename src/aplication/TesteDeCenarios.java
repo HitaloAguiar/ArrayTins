@@ -32,7 +32,7 @@ public class TesteDeCenarios {
 		lista.remove(2);
 		
 		System.out.println("\n\nObjeto removido da posição 2:\n" + lista);
-		
+
 		// Cenários de erro
 				
 //		lista.add(-1, new Pessoa()); // Tentativa de adicionar um objeto em um índice menor que zero
@@ -78,5 +78,17 @@ public class TesteDeCenarios {
 		Pessoa pessoa3 = lista2.get(1);
 		
 		System.out.println("\n" + pessoa3);
+		
+		lista2.add(new Pessoa("Geovanna Santos", "667", 31), 1);
+		
+		System.out.println("\n" + lista2);
+		
+		lista2.addFirst(new Pessoa("Carlos Eduardo", "444", 28));
+		
+		System.out.println("\n" + lista2);
+		
+		lista2.addLast(new Pessoa("Gustavo Sousa", "555", 43));
+		
+		System.out.println("\n" + lista2);
 	}
 }

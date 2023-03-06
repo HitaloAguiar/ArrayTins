@@ -3,6 +3,7 @@ package unitins;
 public class LinkedTins<T> {
 
 	private Node<T> head;
+	private Node<T> tail;
 	private int size = 0;
 
 	public int size() {
@@ -43,44 +44,111 @@ public class LinkedTins<T> {
 		if (isEmpty()) {
 			
 			head = new Node<T>(newElement);
+			
+			tail = head;
 		}
 		
 		else {
 			
-			Node<T> aux = head;
-			
-			while (aux.getNext() != null) {
-				
-				aux = aux.getNext();
-			}
+			Node<T> aux = tail;
 			
 			aux.setNext(new Node<T>(newElement));
+			
+			aux.getNext().setPrevious(tail);
+			
+			tail = aux.getNext();
 		}
 		
 		size++;
 	}
 	
-//	public void addFirst (T newElement) {
-//		
-//		if (isEmpty()) {
-//			
-//			head = new Node<T>(newElement);
-//		}
-//		
-//		Node<T> aux = head;
-//		
-//		while (aux.getNext() != null) {
-//			
-//			aux = aux.getNext();
-//		}
-//		
-//		for (int i = (size-1); i > 0; i--) {
-//			
-//			aux.setNext(aux);
-//			
-//			
-//		}
-//	}
+	public void addFirst (T newElement) {
+		
+		if (isEmpty()) {
+			
+			head = new Node<T>(newElement);
+			
+			tail = head;
+		}
+		
+		else {
+		
+			Node<T> aux = head.getNext();
+			
+			head = new Node<T>(newElement);
+			
+			head.setNext(aux.getPrevious());
+			
+			aux.getPrevious().setPrevious(head);
+		}
+		
+		size++;
+	}
+	
+	public void addLast(T newElement) {
+		
+		if (isEmpty()) {
+			
+			head = new Node<T>(newElement);
+			
+			tail = head;
+		}
+		
+		else {
+			
+			Node<T> aux = tail;
+			
+			aux.setNext(new Node<T>(newElement));
+			
+			aux.getNext().setPrevious(tail);
+			
+			tail = aux.getNext();
+		}
+		
+		size++;
+	}
+	
+	public void add (T newElement, int index) {
+		
+		if (index < 0 || index >= size)
+			throw new IndexOutOfBoundsException();
+		
+		if (isEmpty()) {
+			
+			head = new Node<T>(newElement);
+			
+			tail = head;
+		}
+		
+		else {
+		
+			Node<T> aux = head;
+			
+			for (int i = 0; i < size; i++) {
+				
+				if (i == index)
+					break;
+				
+				aux = aux.getNext();		
+			}
+			
+			Node<T> oldNext = aux.getNext();
+			
+			Node<T> oldPrevious = aux.getPrevious();
+			
+			aux = new Node<T>(newElement);
+			
+			aux.setNext(oldNext.getPrevious());
+			
+			oldNext.getPrevious().setPrevious(aux);
+			
+			oldPrevious.setNext(aux);
+			
+			aux.setPrevious(oldPrevious);
+		}
+		
+		size++;
+	}
 	
 	public T getFirst() {
 		
@@ -89,14 +157,7 @@ public class LinkedTins<T> {
 	
 	public T getLast() {
 		
-		Node<T> aux = head;
-		
-		while (aux.getNext() != null) {
-			
-			aux = aux.getNext();
-		}
-		
-		return aux.getData();
+		return tail.getData();
 	}
 	
 	public T get(int index) {
