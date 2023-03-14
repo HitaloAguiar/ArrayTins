@@ -52,10 +52,16 @@ public class TesteDeCenarios {
 		System.out.println(lista2.isEmpty());
 		
 		System.out.println(lista2.size());
-		
+
 		lista2.add(new Pessoa("Paulo Henrique", "111", 40));
 		
 		System.out.println("\n" + lista2);
+
+		lista2.remove();
+
+		System.out.println(lista2.isEmpty());
+		
+		System.out.println(lista2.size());
 		
 		lista2.add(new Pessoa("João Almeida", "222", 25));
 		
@@ -89,6 +95,36 @@ public class TesteDeCenarios {
 		
 		lista2.addLast(new Pessoa("Gustavo Sousa", "555", 43));
 		
+		System.out.println("\n" + lista2);
+
+		lista2.add(new Pessoa("João Pedro", "6666", 21), 0);
+
+		System.out.println("\n" + lista2);
+
+		lista2.add(new Pessoa("Mariana Silva", "7777", 55), 6);
+
+		System.out.println("\n" + lista2);
+
+		Pessoa pessoa4 = lista2.remove();
+
+		System.out.println("\n" + pessoa4);
+
+		System.out.println("\n" + lista2);
+
+		lista2.add(new Pessoa("Paulo Henrique", "111", 40));
+
+		System.out.println("\n" + lista2);
+
+		lista2.removeLast();
+
+		System.out.println("\n" + lista2);
+
+		lista2.add(new Pessoa("Paulo Henrique", "111", 40));
+
+		System.out.println("\n" + lista2);
+
+		lista2.remove(4);
+
 		System.out.println("\n" + lista2);
 	}
 }
